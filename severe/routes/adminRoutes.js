@@ -2,7 +2,6 @@ const express = require('express');
 const adminController = require('../controllers/adminController');
 const router = express.Router();
 
-// Admin Routes
 router.post('/', adminController.addEmployee);
 router.put('/:employeeId', adminController.updateEmployee);
 router.delete('/:employeeId', adminController.deleteEmployee);

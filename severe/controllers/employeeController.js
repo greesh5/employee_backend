@@ -1,7 +1,6 @@
 const Employee = require('../models/Employee');
 const Timesheet = require('../models/Timesheet');
 
-// Get Employee Profile
 exports.getEmployeeProfile = async (req, res, next) => {
   try {
     const { employeeId } = req.params;
@@ -18,7 +17,7 @@ exports.getEmployeeProfile = async (req, res, next) => {
   }
 };
 
-// Submit Timesheet
+
 exports.submitTimesheet = async (req, res, next) => {
   try {
     const { employeeId, weekStartDate, hoursWorked, documents } = req.body;
@@ -44,7 +43,7 @@ exports.submitTimesheet = async (req, res, next) => {
   }
 };
 
-// Get Employee Timesheets (Calendar View)
+
 exports.getEmployeeTimesheets = async (req, res, next) => {
   try {
     const { employeeId } = req.params;

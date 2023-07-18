@@ -1,22 +1,17 @@
 const Employee = require('../models/Employee');
 const Timesheet = require('../models/Timesheet');
 
-// Add Employee
 exports.addEmployee = async (req, res, next) => {
   try {
-    const { name, email, team } = req.body;
-    const employee = new Employee({ name, email, team });
+    const { name,email,team,dateOfJoining ,dateOfBirth,phoneNumber,password } = req.body;
+    const employee = new Employee({ name,email,team,dateOfJoining ,dateOfBirth,phoneNumber,password });
     await employee.save();
-
-    // Logic to register in Firebase Authentication
-
     res.status(201).json(employee);
   } catch (error) {
     next(error);
   }
 };
 
-// Update Employee
 exports.updateEmployee = async (req, res, next) => {
   try {
     const { name, team } = req.body;
@@ -38,7 +33,7 @@ exports.updateEmployee = async (req, res, next) => {
   }
 };
 
-// Delete Employee
+
 exports.deleteEmployee = async (req, res, next) => {
   try {
     const { employeeId } = req.params;
@@ -48,16 +43,13 @@ exports.deleteEmployee = async (req, res, next) => {
     if (!employee) {
       return res.status(404).json({ message: 'Employee not found' });
     }
-
-    // Logic to delete employee from Firebase Authentication
-
     res.json(employee);
   } catch (error) {
     next(error);
   }
 };
 
-// Get All Employees
+
 exports.getAllEmployees = async (req, res, next) => {
   try {
     const employees = await Employee.find();
@@ -67,7 +59,7 @@ exports.getAllEmployees = async (req, res, next) => {
   }
 };
 
-// Approve Timesheet
+
 exports.approveTimesheet = async (req, res, next) => {
   try {
     const { timesheetId } = req.params;
@@ -88,7 +80,7 @@ exports.approveTimesheet = async (req, res, next) => {
   }
 };
 
-// Get All Timesheets (Calendar View)
+
 exports.getAllTimesheets = async (req, res, next) => {
   try {
     const timesheets = await Timesheet.find();
